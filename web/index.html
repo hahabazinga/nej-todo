@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>todo</title>
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="app-title"><p>Todos</p></header>
+      <section class="app-main">
+        <header class="input-wrapper">
+          <button class="toggle-all">></button>
+          <input class="new-todo" type="text" placeholder="what needs to be done..." autofocus/>
+        </header>
+        <ul class="todo-list" id="todo-list">
+  
+        </ul>
+        <footer class="operation-btns">
+          <div><span class="todo-count"></span> items</div>
+          <div>
+            <button class="filter selected">All</button>
+            <button class="filter">Active</button>
+            <button class="filter">Completed</button>
+          </div>
+          <div><button class="clear">Clear completed</button></div>
+        </footer>
+      </section>
+    </div>
+  </body>
+  <script src='./lib/res/define.js'></script>
+  <script src='./dist/bundle.js'></script>
+</html>
