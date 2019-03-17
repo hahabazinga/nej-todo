@@ -1,9 +1,8 @@
 html,
-
 body {
 	font: 18px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	background: #f5f5f5;
-	color: #4d4d4d;
+	color: #606266;
 
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
@@ -35,6 +34,7 @@ button {
 }
 .app-title{
     font-size: 40px;
+    text-align: center;
 }
 
 
@@ -42,6 +42,7 @@ button {
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg) scaleY(1.5);
     font-size: 24px;
+    color: #909399;
     font-weight: bold;
     height: 48px;
     outline: none;
@@ -53,6 +54,60 @@ button {
     height: 48px;
     font-size: 22px;
     width: calc(100% - 18px);
-    margin-left: 18px;
+    margin-left: 24px;
     outline: none;
+    border: none;
+    padding: 0 20px;
+}
+
+.filter{
+    outline: none;
+    font-size: 14px;
+    margin: 0 10px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    color: #409eff;
+    background-color:#ecf5ff;
+    border-radius: 2px;
+    border: #409eff 1px solid;
+}
+
+.selected{
+    color:#fff;
+    background-color: #409eff;
+}
+
+.count-box{
+    color:#909399;
+    margin-bottom: 10px;
+}
+.todo-count{
+    color: #409EFF
+}
+.notification{
+    position: absolute;
+    right: -310px;
+    top: 10px;
+    border-radius:5px; 
+    width: 280px;
+    margin: 0 auto;
+    padding: 0 15px;
+    color: #fff;
+    transition: right 1s ease-in-out;
+}
+.notification-title{
+    font-weight: 400; 
+}
+.notification-text{
+    font-weight: 300; 
+}
+.success {
+    background-color: #52c41a;
+}
+.error {
+    background-color: #f5222d;
+}
+.warn {
+    background-color: #faad14;
 }

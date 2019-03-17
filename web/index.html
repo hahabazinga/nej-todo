@@ -10,7 +10,12 @@
     <title>todo</title>
   </head>
   <body>
+      
     <div id="app" class="app">
+        <div class="notification success">
+            <p class="notification-title">sucess</p>
+            <p class='notification-text'>dsfgadsgdfg</p>
+        </div>
       <header class="app-title"><p>Todos</p></header>
       <section class="app-main">
         <header class="input-wrapper">
@@ -21,13 +26,13 @@
   
         </ul>
         <footer class="operation-btns">
-          <div><span class="todo-count"></span> items</div>
+          <div class="count-box"><span class="todo-count"></span></div>
           <div>
             <button class="filter selected">All</button>
             <button class="filter">Active</button>
             <button class="filter">Completed</button>
+            <button class="filter clean">Clean completed</button>
           </div>
-          <div><button class="clear">Clear completed</button></div>
         </footer>
       </section>
     </div>

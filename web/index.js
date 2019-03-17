@@ -8,40 +8,31 @@ NEJ.define([
     '../store.js'
   ], function (_e, _event, _tpl, _item, _css,  _store, _p) {
 
-    console.log('css', )
     const _pro = _p
     const _count = _e._$getByClassName('app','todo-count')[0]
     const __toggle_all = _e._$getByClassName('app', 'toggle-all')[0]
     const __input = _e._$getByClassName('app', 'new-todo')[0]
     const __filter_btns = _e._$getByClassName('app', 'filter')
-    const __clear_btn = _e._$getByClassName('app', 'clear')[0]
+    const __clean_btn = _e._$getByClassName('app', 'clean')[0]
   
     _pro.__update = function (store) {
-      _pro.__updateCount(store.length)
+      _pro.__updateCount(store)
       _pro.__updateItems(store)
     }
   
-    _pro.__updateCount = function (num) {
-      _count.innerText = num
+    _pro.__updateCount = function (store) {
+      const completedNum = store.reduce((acc, item) => item.completed ? acc + 1 : acc, 0);
+      _count.innerText = `total: ${store.length}， completed: ${completedNum}`
     }
   
     _pro.__updateItems = function (store) {
       _e._$clearChildren("todo-list")
   
-      const _list = _tpl._$getItemTemplate(
+      _tpl._$getItemTemplate(
         store, _item._$$TodoItem, {
-          parent: 'todo-list',
-          ontoggle: function (_data) {
-            // TODO
-            console.log('ontoggle', _data)
-          },
-          ondelete: function (_data) {
-            // TODO
-            console.log('ondelete', _data)
-          }
+          parent: 'todo-list'
         }
       );
-      // _item._$$TodoItem._$recycle()
     }
   
     _pro.__addNewTodo = function (event) {
@@ -64,12 +55,12 @@ NEJ.define([
     }
   
     _pro.__toggleAllTodos = function () {
-      console.log('__toggleAllTodos')
       _store._$toggleAll()
     }
   
-    _pro.__clearTodosCompleted = function () {
-      _store._$clearAllCompletedTodos()
+    _pro.__cleanTodosCompleted = function () {
+      _store._$cleanAllCompletedTodos();
+      
     }
   
     /**
@@ -107,7 +98,6 @@ NEJ.define([
 
     _pro.__initXGUI = (function () {
       _e._$pushCSSText(_css);
-      //_tpl._$addNodeTemplate(_html);
     })();
   
     _pro.__init = function () {
@@ -120,7 +110,7 @@ NEJ.define([
       _event._$addEvent(__filter_btns[0], 'click', _pro.__getAllTodos);
       _event._$addEvent(__filter_btns[1], 'click', _pro.__getActiveTodos);
       _event._$addEvent(__filter_btns[2], 'click', _pro.__getCompletedTodos);
-      _event._$addEvent(__clear_btn, 'click', _pro.__clearTodosCompleted);
+      _event._$addEvent(__clean_btn, 'click', _pro.__cleanTodosCompleted);
   
       // 注册store，开始观察者模式
       _store._$register(_p)

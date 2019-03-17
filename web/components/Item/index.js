@@ -24,10 +24,12 @@ NEJ.define([
     this.__body.innerHTML = _html
     this.__checked = _e._$getByClassName(this.__body, 'todo-toggle')[0]
     this.__label = _e._$getByClassName(this.__body, 'todo-label')[0]
-    const removeBtn = _e._$getByClassName(this.__body, 'todo-remove')[0]
+    const deleteBtn = _e._$getByClassName(this.__body, 'todo-delete')[0]
  
-    _event._$addEvent(removeBtn, 'click', _pro.__onRemove._$bind(this));
+    _event._$addEvent(deleteBtn, 'click', _pro.__onDelete._$bind(this));
     _event._$addEvent(this.__checked, 'click', _pro.__onToggle._$bind(this));
+    _event._$addEvent(this.__body, 'mouseover', (e) => _e._$setStyle(deleteBtn, 'display', 'block'));
+    _event._$addEvent(this.__body, 'mouseout', (e) => _e._$setStyle(deleteBtn, 'display', 'none'));
   };
 
   // 初始化操作
@@ -48,21 +50,20 @@ NEJ.define([
     console.log('item销毁')
   }
 
-
-  _pro.__onRemove = function (event) {
-    console.log('__onRemove', this.__todo._id)
+  _pro.__onDelete = function (event) {
+    console.log('__onDelete', this.__todo._id)
 
     const _node = _event._$getElement(event, 'd:action');
     if (!_node) return;
     // 操作
     const action = _e._$dataset(_node, 'action')
 
-    _store._$deleteTodo(this.__todo._id)
+    _store._$deleteTodo(this.__todo)
   }
 
   _pro.__onToggle = function () {
     console.log('__onToggle', this.__todo._id)
-    _store._$toggleTodo(this.__todo._id)
+    _store._$toggleTodo(this.__todo)
   }
   return _p;
 });
