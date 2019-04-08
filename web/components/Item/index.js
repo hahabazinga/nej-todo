@@ -44,19 +44,14 @@ NEJ.define([
     this.__checked.checked = _todo.completed
   }
 
-  // 销毁操作
-  _pro.__destroy = function () {
-    this.__super()
-    console.log('item销毁')
-  }
-
   _pro.__onDelete = function (event) {
-    console.log('__onDelete', this.__todo._id)
+    // console.log('__onDelete', this.__todo._id)
 
-    const _node = _event._$getElement(event, 'd:action');
-    if (!_node) return;
-    // 操作
-    const action = _e._$dataset(_node, 'action')
+    // const _node = _event._$getElement(event, 'd:action');
+    // console.log('__onDelete', _node)
+    // if (!_node) return;
+    // // 操作
+    // const action = _e._$dataset(_node, 'action')
 
     _store._$deleteTodo(this.__todo)
   }

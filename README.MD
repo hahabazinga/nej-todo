@@ -7,7 +7,7 @@ npm run dev
 ### run mongodb
 
 ```
-mongod --dbpath ./momgod
+mongod --dbpath ./mongod
 ```
 
 ### run server
